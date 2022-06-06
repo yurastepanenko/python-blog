@@ -13,9 +13,23 @@
         Published {{ post.publish }} by {{ post.author }}
     </p>
 {{ post.body|linebreaks }}
+
+<!--Блок отправить на почту-->
 <p>
     <a href="{% url "blog:post_share" post.id %}">Share this post</a>
 </p>
+
+<!--Блок вывода статей по аналогичным тегам-->
+<div class="simular-posts">
+    <h2>Похожие статьи</h2>
+    {% for post in similar_posts %}
+        <p>
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        </p>
+    {% empty %}
+       <span>Нет похожих статей</span>
+    {% endfor %}
+</div>
 
 <!--кол-во комментариев-->
 {% with comments.count as total_comments %}
@@ -52,7 +66,10 @@
     </form>
 {% endif %}
 
+
 {% endblock %}
+
+
 </body>
 </html>
 

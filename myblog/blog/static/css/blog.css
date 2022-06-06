@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
     background-color: #567895;
-    margin: 10 auto;
+    margin: 10px auto;
 }
 /*начало колонок*/
 .row {
@@ -42,9 +42,14 @@ h1{
 }
 .form-comment{
    max-height: 150px;
+    margin-bottom: 10px;
 }
 textarea {
     height: 100px;
     width: 500px;
     background-color: cornsilk;
+}
+simular-posts{
+    background-color: green;
+    max-height: 60px;
 }
