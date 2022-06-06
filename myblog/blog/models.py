@@ -3,6 +3,8 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 
+
+# Класс для постов
 class Post(models.Model):
     STATUS_CHOICES = (
         ('draft', 'Draft'),
@@ -26,10 +28,27 @@ class Post(models.Model):
                              self.publish.strftime('%d'),
                              self.slug])
 
+    # class Meta:
+    #     ordering = ('-publish','created')
 
-class Meta:
-    ordering = ('-publish',)
+    def __str__(self):
+        return self.title
 
 
-def __str__(self):
-    return self.title
+# Класс для комментариев
+class Comment(models.Model):
+    post = models.ForeignKey(Post, related_name='comments',
+                             on_delete=models.CASCADE)
+    name = models.CharField(max_length=80)
+    email = models.EmailField()
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    # отключение неприемлемых комментариев вручную
+    active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ('created',)
+
+    def __str__(self):
+        return 'Comment by {} on {}'.format(self.name, self.post)

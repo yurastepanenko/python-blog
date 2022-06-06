@@ -3,12 +3,11 @@
     background-color: #567895;
     margin: 10 auto;
 }
-
+/*начало колонок*/
 .row {
     display: flex;
 }
 
-/* Create two equal columns that sits next to each other */
 .column {
     flex: 70%;
     padding: 10px;
@@ -17,9 +16,11 @@
 .sidebar {
     flex:30%;
     padding: 10px;
-    height: 300px;
+    height: 200px;
     text-align: right;
 }
+/*конец колонок*/
+
 a:hover{
     color: green;
 }
@@ -30,4 +31,20 @@ h1{
 }
 .btn-submit{
     color: red;
+}
+
+/*форма отзыва*/
+.comment-wrap{
+    max-height: 150px;
+     overflow: hidden;
+    background-color: green;
+    overflow-y: scroll;
+}
+.form-comment{
+   max-height: 150px;
+}
+textarea {
+    height: 100px;
+    width: 500px;
+    background-color: cornsilk;
 }

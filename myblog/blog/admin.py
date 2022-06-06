@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Comment
 
 
-# Отвечает за отображение в админке сайта
+# Отвечает за отображение в админке сайта постов
 class PostAdmin(admin.ModelAdmin):
     # Поля, которые будут отображаться
     list_display = ('title', 'slug', 'author', 'publish', 'status')
@@ -16,3 +16,16 @@ class PostAdmin(admin.ModelAdmin):
 
 # Подключаем к админке сайта
 admin.site.register(Post, PostAdmin)
+
+
+# Отвечает за отображение в админке сайта комментариев
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'post', 'created', 'active')
+    list_filter = ('active', 'created', 'updated')
+    search_fields = ('name', 'email', 'body')
+
+
+# Подключаем к админке сайта
+admin.site.register(Comment, CommentAdmin)
+
+
