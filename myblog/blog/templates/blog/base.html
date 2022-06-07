@@ -17,6 +17,9 @@
     <div id="sidebar" class="column sidebar">
         <h2>Блог от Юричика:)</h2>
         <p>Это мой блог! Я уже написал {% total_posts %} постов)</p>
+        <p>
+            <a href="{% url 'blog:post_feed' %}">Подпишитесь на мою
+                RSS-ленту</a></p>
 
         <h3>Мои последние статьи</h3>
         {% show_latest_posts 3 %}

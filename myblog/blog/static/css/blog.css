@@ -53,6 +53,7 @@ simular-posts{
     background-color: green;
     max-height: 60px;
 }
-sidebar-ul{
-
+.sidebar-ul a{
+    /*не работает*/
+  color: #fffc30;
 }
