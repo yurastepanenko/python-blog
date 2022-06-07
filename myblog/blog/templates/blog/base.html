@@ -1,9 +1,12 @@
+<!--подключаем свои теги-->
+{% load blog_tags %}
+
 {% load staticfiles %}
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <title>{% block title %}{% endblock %}</title>
-    <link href="{% static "css/blog.css" %}" rel="stylesheet">
+    <link href="{% static 'css/blog.css' %}" rel="stylesheet">
 </head>
 <body>
 <div class="row">
@@ -12,9 +15,22 @@
         {% endblock %}
     </div>
     <div id="sidebar" class="column sidebar">
-        <h2>My blog</h2>
-        <p>This is my blog.</p>
+        <h2>Блог от Юричика:)</h2>
+        <p>Это мой блог! Я уже написал {% total_posts %} постов)</p>
+
+        <h3>Мои последние статьи</h3>
+        {% show_latest_posts 3 %}
+
+        <h3>Самые комментируемые посты</h3>
+        {% get_most_commented_posts as most_commented_posts %}
+        <ul>
+                {% for post in most_commented_posts %}
+            <li>
+                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            </li>
+                {% endfor %}
+        </ul>
     </div>
-<div/>
+</div>
 </body>
 </html>

@@ -9,15 +9,15 @@
 }
 
 .column {
-    flex: 70%;
+    flex: 80%;
     padding: 10px;
     height: 300px;
 }
 .sidebar {
-    flex:30%;
+    flex:20%;
     padding: 10px;
     height: 200px;
-    text-align: right;
+    text-align: left;
 }
 /*конец колонок*/
 
@@ -52,4 +52,7 @@ textarea {
 simular-posts{
     background-color: green;
     max-height: 60px;
+}
+sidebar-ul{
+
 }
