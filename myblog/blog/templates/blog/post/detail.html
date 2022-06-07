@@ -6,17 +6,21 @@
 </head>
 <body>
 {% extends "blog/base.html" %}
+
+<!--подгружаем модуль тегов -->
+{% load blog_tags %}
+
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
     <h1>{{ post.title }}</h1>
     <p class="date">
         Published {{ post.publish }} by {{ post.author }}
     </p>
-{{ post.body|linebreaks }}
+{{ post.body|markdown }}
 
 <!--Блок отправить на почту-->
 <p>
-    <a href="{% url "blog:post_share" post.id %}">Share this post</a>
+    <a href="{% url 'blog:post_share' post.id %}">Share this post</a>
 </p>
 
 <!--Блок вывода статей по аналогичным тегам-->
