@@ -58,6 +58,8 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'blog',
     'taggit',
+    'haystack',
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [
@@ -156,3 +158,12 @@ EMAIL_HOST_USER = 'yurastepanenko@gmail.com'
 EMAIL_HOST_PASSWORD = 'nsvqmvaexjoumurv'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+# поиск
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+        'URL': 'http://127.0.0.1:8983/solr/blog'
+
+    },
+}
